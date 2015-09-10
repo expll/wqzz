@@ -18,8 +18,18 @@ extern CGPDFDocumentRef GetPDFDocumentRef(NSString *filename);
     // Drawing code
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(context, 0, self.frame.size.height);
+    CGContextTranslateCTM(context, 0, self.frame.size.height+3);
     CGContextScaleCTM(context, 1, -1);
+    
+    if ([UIScreen mainScreen].bounds.size.width > [UIScreen mainScreen].bounds.size.height) {
+        // Landscape
+        
+    } else {
+        // portrait
+        CGContextScaleCTM(context, 1.44, 1.44);
+    }
+    
+    
     
     [self DisplayPDFPage:context :self.index+1 :self.pdffile];
 

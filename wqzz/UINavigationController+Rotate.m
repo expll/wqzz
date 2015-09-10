@@ -44,7 +44,7 @@
 -(NSUInteger)supportedInterfaceOrientations{
     
     
-    return UIInterfaceOrientationMaskLandscapeRight;
+    return UIInterfaceOrientationMaskAll;
 }
 
 - (BOOL)shouldAutorotate
@@ -54,7 +54,7 @@
 
 -(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    return UIInterfaceOrientationLandscapeRight;
+    return UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 @end

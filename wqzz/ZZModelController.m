@@ -44,6 +44,9 @@
     
     // Create a new view controller and pass suitable data.
     ZZDataViewController *dataViewController = [storyboard instantiateViewControllerWithIdentifier:@"ZZDataViewController"];
+
+
+    
     //dataViewController.dataObject = self.pageData[index];
     dataViewController.index = [self.pageData[key][index] integerValue];
     dataViewController.pdffile = key;

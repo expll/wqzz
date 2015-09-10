@@ -29,6 +29,7 @@
     [backImageView setImage:[UIImage imageNamed:@"bizhi2"]];
     self.tableView.backgroundView = backImageView;
     
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 
 
     //books = [ZZDataSource getBooks];
@@ -140,7 +141,7 @@
 */
 
 -(NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscapeRight;
+    return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 - (BOOL)shouldAutorotate
@@ -150,7 +151,7 @@
 
 -(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    return UIInterfaceOrientationLandscapeRight;
+    return UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 

@@ -38,6 +38,8 @@
     
     self.navigationController.navigationBar.hidden = YES;
 
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,18 +57,23 @@
     self.PDFView.index = self.index;
     self.PDFView.pdffile = self.pdffile;
     
+
+    
 }
 
 - (void)viewDidLayoutSubviews
 {
+    [super viewDidLayoutSubviews];
     
-    if (Landscape) {
+    if ([UIScreen mainScreen].bounds.size.width > [UIScreen mainScreen].bounds.size.height) {
         // Landscape
         
     } else {
         // portrait
-
+        self.PDFView.frame = CGRectMake(10, 0, [UIScreen mainScreen].bounds.size.width-20, [UIScreen mainScreen].bounds.size.height);
+        self.PDFView.superview.backgroundColor = [UIColor whiteColor];
     }
+
 }
 
 
