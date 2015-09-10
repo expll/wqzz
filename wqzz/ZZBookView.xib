@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="RNa-hp-byz" customClass="ZZBookView">
+            <rect key="frame" x="0.0" y="0.0" width="146" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="youxi.png" translatesAutoresizingMaskIntoConstraints="NO" id="juN-mZ-Ckp">
+                    <rect key="frame" x="0.0" y="0.0" width="146" height="198"/>
+                </imageView>
+                <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ks-un-ilR">
+                    <rect key="frame" x="24" y="79" width="99" height="39"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="下载中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPw-iK-HhU">
+                            <rect key="frame" x="8" y="18" width="83" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <progressView opaque="NO" tag="3" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-XH-Uky">
+                            <rect key="frame" x="9" y="12" width="80" height="2"/>
+                        </progressView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未下载" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciQ-Fy-EHl">
+                    <rect key="frame" x="24" y="79" width="99" height="26"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rTc-VM-uEy" userLabel="ClickView">
+                    <rect key="frame" x="0.0" y="0.0" width="146" height="198"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="O3n-97-hk9" appends="YES" id="daW-Fb-RRN"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="DLLabel" destination="VPw-iK-HhU" id="yB0-HR-9wC"/>
+                <outlet property="DLProgress" destination="Fyd-XH-Uky" id="HTH-NJ-2YB"/>
+                <outlet property="DLing" destination="8Ks-un-ilR" id="mNK-VI-vul"/>
+                <outlet property="ImageView" destination="juN-mZ-Ckp" id="M5k-yK-R04"/>
+                <outlet property="NotDL" destination="ciQ-Fy-EHl" id="HOh-uV-gAt"/>
+            </connections>
+            <point key="canvasLocation" x="229" y="258"/>
+        </view>
+        <tapGestureRecognizer id="O3n-97-hk9">
+            <connections>
+                <action selector="ClickDLPressed:" destination="RNa-hp-byz" id="lGk-bB-FC9"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="youxi.png" width="450" height="587"/>
+    </resources>
+</document>

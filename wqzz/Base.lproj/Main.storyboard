@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="oIc-B0-Fqe">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--围棋天地-->
+        <scene sceneID="nYs-v5-6uO">
+            <objects>
+                <tableViewController id="FrS-x2-vuA" customClass="ZZHomeTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="232" sectionHeaderHeight="22" sectionFooterHeight="22" id="uaO-Sn-XZN">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="zzcell" rowHeight="232" id="6QH-X0-vc4" customClass="ZZHomeTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6QH-X0-vc4" id="Vuk-iZ-iM4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FrS-x2-vuA" id="Rbq-sc-VCw"/>
+                            <outlet property="delegate" destination="FrS-x2-vuA" id="4HC-0T-s1c"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="围棋天地" id="zMV-Av-gjx"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1024" height="768"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d60-8r-gxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="cwM-BI-fcy">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <tapGestureRecognizer id="MqO-52-nIF">
+                    <connections>
+                        <action selector="downloadBook:" destination="FrS-x2-vuA" id="fm1-hp-UIX"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2960" y="-1792"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="dzd-1d-c3e">
+            <objects>
+                <navigationController id="oIc-B0-Fqe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="rf0-zg-gXR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BNs-18-dpB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FrS-x2-vuA" kind="relationship" relationship="rootViewController" id="Wiq-rA-iii"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1XP-cp-Pa1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1781" y="-1792"/>
+        </scene>
+        <!--Data View Controller-->
+        <scene sceneID="rtq-tP-mHA">
+            <objects>
+                <viewController storyboardIdentifier="ZZDataViewController" extendedLayoutIncludesOpaqueBars="YES" id="86t-6r-nfr" customClass="ZZDataViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fHg-WE-ap0"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Ua-X5-F5A"/>
+                    </layoutGuides>
+                    <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kk4-Dd-zhq">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vom-bI-MqW" customClass="ZZPDFView">
+                                <rect key="frame" x="0.0" y="26" width="510" height="709"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="n61-Y6-Q56" appends="YES" id="yjv-k1-cEk"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80784313730000001" green="0.79607843140000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="1024"/>
+                    <connections>
+                        <outlet property="PDFView" destination="Vom-bI-MqW" id="UmT-WK-vka"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Phf-R8-e5a" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="n61-Y6-Q56">
+                    <connections>
+                        <action selector="hideNavigationBar:" destination="86t-6r-nfr" id="gbs-be-fsP"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3967" y="-1664"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
