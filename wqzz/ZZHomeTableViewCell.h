@@ -13,7 +13,7 @@
 
 @property (assign, nonatomic) NSInteger section;
 @property (assign, nonatomic) NSInteger row;
-
+@property (nonatomic, weak) NSArray *cellData;
 
 
 @end

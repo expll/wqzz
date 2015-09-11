@@ -31,17 +31,11 @@
         [sub removeFromSuperview];
     }
     
-    NSInteger count;
-    if (Landscape) {
-        count = 4;
-    } else {
-        count = 3;
-    }
-    
+    NSInteger count = self.cellData.count;
     CGPoint origin = CGPointMake(65-240, 25);
     for (int i = 0; i < count; i++) {
         
-        ZZBookView *bookview = [[[NSBundle mainBundle] loadNibNamed:@"ZZBookView" owner:nil options:nil] firstObject];
+        ZZBookView *bookview = self.cellData[i];
         origin.x += 240;
         CGRect frame = bookview.frame;
         frame.origin = origin;

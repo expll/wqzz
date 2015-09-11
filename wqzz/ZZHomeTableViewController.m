@@ -15,6 +15,7 @@
 @interface ZZHomeTableViewController ()
 {
     NSArray *books;
+    NSMutableArray *bookViews;
 }
 
 @end
@@ -31,6 +32,37 @@
     
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 
+    
+    bookViews = [NSMutableArray arrayWithCapacity:0];
+    NSInteger countNum;
+    if (Landscape) {
+        countNum = 4;
+    } else {
+        countNum = 3;
+    }
+    
+    NSInteger count = [ZZDataSource book_getCount];
+    NSInteger rowNum;
+    if (count %countNum == 0) {
+        rowNum = count/countNum;
+    } else {
+        rowNum = count/countNum + 1;
+    }
+    
+    
+    for (int i = 0; i < rowNum; i++) {
+        NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:0];
+        for (int i = 0; i < countNum; i++) {
+            
+            ZZBookView *bookview = [[[NSBundle mainBundle] loadNibNamed:@"ZZBookView" owner:nil options:nil] firstObject];
+            [tmpArr addObject:bookview];
+            
+        }
+        [bookViews addObject:tmpArr];
+    }
+    
+
+
 
     //books = [ZZDataSource getBooks];
     // Uncomment the following line to preserve selection between presentations.
@@ -46,6 +78,61 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    
+    @try {
+        ///////////////////////////////////////////////////////////////
+        NSMutableArray *copy = [NSMutableArray arrayWithCapacity:0];
+        for (id arr in bookViews) {
+            for (id arr2 in arr) {
+                [copy addObject:arr2];
+            }
+        }
+        
+        
+        
+        NSInteger countNum;
+        if (Landscape) {
+            countNum = 4;
+            NSLog(@"@@@@@@@@@@@@@@@@@@@");
+        } else {
+            countNum = 3;
+            NSLog(@"####################");
+        }
+        
+        NSInteger count = [ZZDataSource book_getCount];
+        NSInteger rowNum;
+        if (count %countNum == 0) {
+            rowNum = count/countNum;
+        } else {
+            rowNum = count/countNum + 1;
+        }
+        
+        for (int i = 0; i < rowNum; i++) {
+            for (int j = 0; j < countNum; j++) {
+                NSLog(@"%d, %d, %d, %d", i, j, countNum, rowNum);
+                if ((i*countNum + j) < copy.count){
+                    bookViews[i][j] = copy[(i*countNum + j)];
+                }
+                
+                
+            }
+        }
+
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+    }
+    
+    
+    
+    
+}
+
 
 #pragma mark - Table view data source
 
@@ -78,6 +165,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ZZHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"zzcell" forIndexPath:indexPath];
+    cell.cellData = bookViews[indexPath.row];
     
     cell.row = indexPath.row;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -369,6 +369,52 @@ static NetworkStatus prestatus;
 }
 
 
+/******************************
+ array[][4] -----> array[][5]
+ 
+ # # # #          # # # # #
+ . . . .   -----> . . . . .
+ . . . .          . . . . .
+ # # # #          # # # # #
+ 
+ 4列数组 变成 5列数组
+ m列数组 变成 m列数组
+ ******************************/
+- (NSMutableArray *) convertTheArray:(NSMutableArray *)theArray toRow:(NSInteger)lie
+{
+    // "拉平"原来的数组
+    NSMutableArray *plainArray = [NSMutableArray arrayWithCapacity:0];
+    for (id obj1 in theArray) {
+        for (id obj2 in obj1) {
+            [plainArray addObject:obj2];
+        }
+    }
+    
+    // 构建新数组
+    NSMutableArray *retArray = [NSMutableArray arrayWithCapacity:0];
+    NSInteger hang;
+    if ((plainArray.count)%lie == 0) {
+        hang = plainArray.count/lie;
+    } else {
+        hang = plainArray.count/lie + 1;
+    }
+    for (int i = 0; i < hang; i++) {
+        NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:0];
+        for (int j = 0; j < lie; j++) {
+            
+            if (i*hang+j < plainArray.count) {
+                [tmpArray addObject:plainArray[i*hang +j]];
+            }
+            
+        }
+        [retArray addObject:tmpArray];
+        
+        
+    }
+    
+    return retArray;
+}
+
 
 
 
